@@ -53,6 +53,7 @@ function printArray(userBook) {
     const authorPrint = document.createElement('p');
     const pagesPrint = document.createElement('p');
     const readPrint = document.createElement('p');
+    const readBtn = document.createElement('button');
     const removeBtn = document.createElement('button');
 
     titlePrint.textContent = userBook.title + " ";
@@ -65,7 +66,41 @@ function printArray(userBook) {
     bookOutput.appendChild(authorPrint);
     bookOutput.appendChild(pagesPrint);
     bookOutput.appendChild(readPrint);
+    if(read.checked){
+        readBtn.textContent = "Read";
+        bookOutput.appendChild(readBtn);
+    } else {
+        readBtn.textContent = "Not read";
+        bookOutput.appendChild(readBtn);
+    }
     bookOutput.appendChild(removeBtn);
+
+    titlePrint.classList.add('titlePrint');
+    authorPrint.classList.add('authorPrint');
+    pagesPrint.classList.add('pagesPrint');
+    readPrint.classList.add('readPrint');
+    readBtn.classList.add('readBtn');
+    removeBtn.classList.add('btnRemove');
+
+    
+   
+
+    removeBtn.onclick = function () {
+        bookOutput.removeChild(titlePrint);
+        bookOutput.removeChild(authorPrint);
+        bookOutput.removeChild(pagesPrint);
+        bookOutput.removeChild(readPrint);
+        bookOutput.removeChild(readBtn);
+        bookOutput.removeChild(removeBtn);
+    }
+
+    readBtn.onclick = function () {
+        if(readBtn.textContent == "Read"){
+            readBtn.textContent = "Not Read";
+        } else {
+            readBtn.textContent = "Read";
+        }
+    }
 
 }
 
@@ -90,4 +125,5 @@ function unHide() {
     
     addBookBtn.hidden = true;
 }
+
 
