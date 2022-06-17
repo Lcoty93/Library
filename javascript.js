@@ -49,6 +49,7 @@ function addBookToLibrary(book) {
 }
 
 function printArray(userBook) {
+    const div = document.createElement('div');
     const titlePrint = document.createElement('p');
     const authorPrint = document.createElement('p');
     const pagesPrint = document.createElement('p');
@@ -62,18 +63,19 @@ function printArray(userBook) {
     readPrint.textContent = userBook.read;
     removeBtn.textContent = "Remove";
 
-    bookOutput.appendChild(titlePrint);
-    bookOutput.appendChild(authorPrint);
-    bookOutput.appendChild(pagesPrint);
-    bookOutput.appendChild(readPrint);
+    bookOutput.appendChild(div);
+    div.appendChild(titlePrint);
+    div.appendChild(authorPrint);
+    div.appendChild(pagesPrint);
+    div.appendChild(readPrint);
     if(read.checked){
         readBtn.textContent = "Read";
-        bookOutput.appendChild(readBtn);
+        div.appendChild(readBtn);
     } else {
         readBtn.textContent = "Not read";
-        bookOutput.appendChild(readBtn);
+        div.appendChild(readBtn);
     }
-    bookOutput.appendChild(removeBtn);
+    div.appendChild(removeBtn);
 
     titlePrint.classList.add('titlePrint');
     authorPrint.classList.add('authorPrint');
@@ -83,15 +85,17 @@ function printArray(userBook) {
     removeBtn.classList.add('btnRemove');
 
     
-   
+   div.classList.add('bookCard');
 
+    
     removeBtn.onclick = function () {
-        bookOutput.removeChild(titlePrint);
-        bookOutput.removeChild(authorPrint);
-        bookOutput.removeChild(pagesPrint);
-        bookOutput.removeChild(readPrint);
-        bookOutput.removeChild(readBtn);
-        bookOutput.removeChild(removeBtn);
+        div.removeChild(titlePrint);
+        div.removeChild(authorPrint);
+        div.removeChild(pagesPrint);
+        div.removeChild(readPrint);
+        div.removeChild(readBtn);
+        div.removeChild(removeBtn);
+        
     }
 
     readBtn.onclick = function () {

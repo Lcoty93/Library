@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: arial;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #1992D4;
+    color: white;
+  }
+
+  header {
+    background-color: grey;
+    color: white;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+
+  header > h1 {
+    font-size: 30px;
+    padding-left: 20px;
+  }
+
+  #book {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  #main, #book{
+    padding: 15px;
+  }
+
+  .bookCard {
+    background-color: teal;
+    border-radius: 10px;
+    text-align: center;
+  }
