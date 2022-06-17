@@ -1,17 +1,33 @@
 let myLibrary = [];
 
+
 const title = document.querySelector('#title');
 const author = document.querySelector('#author'); 
 const pages = document.querySelector('#pages');
 const read = document.querySelector('#read');
+const readIt = document.querySelector('#readIt');
 const submit = document.querySelector('#submit');
+const addBookBtn = document.querySelector('#addBookBtn');
 const bookOutput = document.querySelector('#book');
 
+title.hidden = true;
+author.hidden = true;
+pages.hidden = true;
+read.hidden = true;
+readIt.hidden = true;
+submit.hidden = true;
+
+
+addBookBtn.addEventListener('click', () => {
+    unHide();
+})
+
 submit.addEventListener('click', () => {
-    // bookOutput.append(title.value + author.value + pages.value + read.checked);
     const userBook = new Book(title.value, author.value, pages.value, read.checked);
     myLibrary.push(userBook);
-    // addBookToLibrary(userBook);
+
+    printArray(userBook);
+    hide();
   });
 
 
@@ -32,18 +48,46 @@ function addBookToLibrary(book) {
     myLibrary.push(this.book);
 }
 
-function printArray() {
-    for(const book of myLibrary) {
-        console.log(book);
-    }
+function printArray(userBook) {
+    const titlePrint = document.createElement('p');
+    const authorPrint = document.createElement('p');
+    const pagesPrint = document.createElement('p');
+    const readPrint = document.createElement('p');
+    const removeBtn = document.createElement('button');
+
+    titlePrint.textContent = userBook.title + " ";
+    authorPrint.textContent = userBook.author + " ";
+    pagesPrint.textContent = userBook.pages + " ";
+    readPrint.textContent = userBook.read;
+    removeBtn.textContent = "Remove";
+
+    bookOutput.appendChild(titlePrint);
+    bookOutput.appendChild(authorPrint);
+    bookOutput.appendChild(pagesPrint);
+    bookOutput.appendChild(readPrint);
+    bookOutput.appendChild(removeBtn);
+
 }
 
-// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet.');
+function hide() {
+title.hidden = true;
+author.hidden = true;
+pages.hidden = true;
+read.hidden = true;
+readIt.hidden = true;
+submit.hidden = true;
 
-// console.log(theHobbit.info());
+addBookBtn.hidden = false;
+}
 
-// myLibrary.push(theHobbit);
-
-printArray();
-console.log(myLibrary);
+function unHide() {
+    title.hidden = false;
+    author.hidden = false;
+    pages.hidden = false;
+    read.hidden = false;
+    readIt.hidden = false;
+    submit.hidden = false;
+    
+    addBookBtn.hidden = true;
+}
 
